@@ -1,10 +1,33 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./Home.scss";
 import { CoinContext } from "../../context/CoinContext";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { allCoin, currency } = useContext(CoinContext);
   const [displayCoin, setDisplayCoin] = useState([]);
+
+  // usestate to store data in the search input form
+  const [input, setInput] = useState("");
+
+  // handle the information thats inputted in the search bar
+  const inputHandler = (event) => {
+    setInput(event.target.value);
+    if (event.target.value === "") {
+      setDisplayCoin(allCoin);
+    }
+  };
+
+  const searchHandler = async (event) => {
+    // prevent page from refreshing when submitting
+    event.preventDefault();
+    // filltered data will be stored in coins
+    const coins = await allCoin.filter((item) => {
+      return item.name.toLowerCase().includes(input.toLowerCase());
+    });
+    // display the results in set diplay function
+    setDisplayCoin(coins);
+  };
 
   // creates copy of the data
   useEffect(() => {
@@ -22,8 +45,22 @@ const Home = () => {
           Worlds Largest Cryptocurrency market mining place. Sign up to learn
           more
         </p>
-        <form>
-          <input type="text" placeholder="Search for Crypto..." />
+        <form onSubmit={searchHandler}>
+          {/* once information is typed itll be stored in input and handler will be called */}
+          <input
+            onChange={inputHandler}
+            list='coinList'
+            value={input}
+            type="text"
+            placeholder="Search for Crypto..."
+            required
+          />
+          {/* will generate result ideas to chose form when typing */}
+          <datalist id="coinList">
+            {allCoin.map((item, index) => (
+              <option key={index} value={item.name} />
+            ))}
+          </datalist>
           <button type="submit">Search</button>
         </form>
       </div>
@@ -38,7 +75,7 @@ const Home = () => {
         {
           // limit to 10 data sets
           displayCoin.slice(0, 10).map((item, index) => (
-            <div className="table-layout" key={index}>
+            <Link to={`/coin/${item.id}`} className="table-layout" key={index}>
               <p>{item.market_cap_rank}</p>
               <div>
                 <img src={item.image} alt="" />
@@ -54,7 +91,7 @@ const Home = () => {
               <p className="market-cap">
                 {currency.symbol} {item.market_cap.toLocaleString()}
               </p>
-            </div>
+            </Link>
           ))
         }
       </div>

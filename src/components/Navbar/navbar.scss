@@ -1,65 +1,90 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 
-.navbar{
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10%;
+  color: #ddd;
+  border-bottom: 2px solid #3c3c3c;
+
+  .logo {
+    width: max(12vw, 120px);
+  }
+
+  ul {
+    display: flex;
+    gap: 14px;
+    list-style: none;
+
+    li {
+      cursor: pointer;
+    }
+  }
+
+  .nav-right {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 20px 10%;
-    color: #ddd;
-    border-bottom: 2px solid #3c3c3c;
+    gap: max(1vw, 12px);
 
-    .logo{
-        width: max(12vw, 120px);
+    select {
+      padding: 5px 8px;
+      border-radius: 6px;
+      border: 2px solid white;
+      background: transparent;
+      color: white;
+
+      option {
+        background-color: #09005c;
+        color: white;
+      }
     }
 
-    ul{
-        display: flex;
-        gap: 14px;
-        list-style: none;
+    button {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 25px;
+      border-radius: 20px;
+      font: 15px;
+      font-weight: 500;
+      color: #393939;
+      background: white;
+      border: none;
+      cursor: pointer;
 
-        li{
-            cursor: pointer;
-        }
-
+      img {
+        width: 13px;
+      }
     }
-
-    .nav-right{
-        display: flex;
-        align-items: center;
-        gap: max(1vw, 12px);
-
-        select{
-            padding: 5px 8px;
-            border-radius: 6px;
-            border: 2px solid white;
-            background: transparent;
-            color: white;
-
-            option{
-                background-color: #09005c;
-                color: white;
-
-            }
-
-        }
-
-        button{
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 25px;
-            border-radius: 20px;
-            font: 15px;
-            font-weight: 500;
-            color: #393939;
-            background: white;
-            border: none;
-            cursor: pointer;
-
-            img{
-                width: 13px;
-            }
-        }
-    }
-
+  }
 }
+
+@media (max-width: 900px) {
+  .navbar {
+    padding: 20px 8%;
+
+    button {
+      gap: 8px;
+      padding: 8px 18px;
+      font-size: 14px;
+    }
+  }
+}
+
+// hides menu for for small screen
+@media (max-width: 768px) {
+    .navbar {
+      padding: 20px 5%;
+  
+     ul{
+        display: none;
+     }
+     button{
+        img{
+            width: 20px;
+        }
+     }
+    }
+  }
+  

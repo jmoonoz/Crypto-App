@@ -1,10 +1,14 @@
-import React from 'react'
-import "./Footer.scss"
+import React from "react";
+import "./Footer.scss";
 
 const Footer = () => {
-  return (
-    <div>Footer</div>
-  )
-}
+    const year = new Date();
 
-export default Footer
+  return (
+    <div className="footer">
+      <p>Copyright @ {year.getFullYear()} Crypto Currency</p>
+    </div>
+  );
+};
+
+export default Footer;

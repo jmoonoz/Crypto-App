@@ -14,12 +14,12 @@ const CoinContextProvider = (props) => {
   });
 
   const fetchAllCoin = async () => {
-    // const apiKey = import.meta.env.VITE_CRYPTO_API_KEY;
+    const apiKey = import.meta.env.VITE_CRYPTO_API_KEY;
     const options = {
       method: "GET",
       headers: {
         accept: "application/json",
-        "x-cg-demo-api-key": "CG-gHhB1sgPNobwZnZy7QtQG2wE",
+        "x-cg-demo-api-key": apiKey,
       },
     };
 
