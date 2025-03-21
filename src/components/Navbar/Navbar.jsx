@@ -6,7 +6,7 @@ import { CoinContext } from "../../context/CoinContext";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
-  // uses the coincontext to set the crypto infomration
+  // uses the coincontext to set the crypto infomration update
   const { setCurrency } = useContext(CoinContext);
 
   // currency handler function
