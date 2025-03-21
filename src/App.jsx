@@ -1,10 +1,10 @@
 import React from "react";
 import "./index.scss";
-import NavBar from "./components/Navbar/NavBar";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Coin from "./pages/Coin/Coin";
 import Footer from "./components/footer/Footer";
+import NavBar from "./components/Navbar/Navbar";
 
 const App = () => {
   return (
